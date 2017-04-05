@@ -1,0 +1,40 @@
+{
+  "name": "trowel-ribbons",
+  "homepage": "https://github.com/FriendsOfTrowel/Ribbons",
+  "authors": [
+    "Loïc Goyet <loic@troopers.email>"
+  ],
+  "description": "The official Trowel Component for ribbons",
+  "main": [
+    "src/scss/ribbons.scss",
+    "src/twig/ribbon.html.twig",
+    "injector.json"
+  ],
+  "keywords": [
+    "scss",
+    "css",
+    "twig",
+    "html",
+    "trowel",
+    "trowel-ribbons",
+    "ribbon"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    ".bowerrc",
+    ".gitignore",
+    "gulpfile.babel.js",
+    "package.json",
+    "sache.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FriendsOfTrowel/Ribbons.git"
+  },
+  "dependencies": {
+    "trowel-core": "^4.0.2"
+  }
+}

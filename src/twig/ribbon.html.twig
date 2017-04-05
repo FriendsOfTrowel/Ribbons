@@ -1,0 +1,14 @@
+{% set syntax = syntax|default({
+    'prefix': false,
+    'separator': {
+        'prefix': '-',
+        'element': '__',
+        'modifier': '--',
+    },
+}) %}
+
+{% set blockSelector = syntax.prefix|default(false) ? syntax.prefix ~ syntax.separator.prefix ~ 'ribbon' : 'ribbon' %}
+
+<div class="{{ blockSelector }}">
+    {{ block('body') }}
+</div>
