@@ -9,6 +9,13 @@
 
 {% set blockSelector = syntax.prefix|default(false) ? syntax.prefix ~ syntax.separator.prefix ~ 'ribbon' : 'ribbon' %}
 
-<div class="{{ blockSelector }}">
-    {{ block('body') }}
-</div>
+{% set modifiersClass = '' %}
+{% for modifier in modifiers|default([]) %}
+    {% set modifiersClass = modifiersClass ~ ' ' ~ blockSelector ~ syntax.separator.modifier ~ modifier %}
+{% endfor %}
+
+<span class="{{ blockSelector }}{{ modifiersClass }}">
+    <span class="{{ blockSelector }}__band">
+        <span class="{{ blockSelector }}__content">{{ block('content') }}</span>
+    </span>
+</span>

@@ -5,29 +5,92 @@
 @import 'utils/enables';
 @import 'utils/syntaxes';
 @import 'utils/trowel-variables';
-@import 'utils/mixin-example';
+@import 'utils/mixin-ribbons';
+@import 'utils/mixin-ribbons-band';
 
-$ribbon--selector: selector(new 'ribbon' with $ribbons--syntax);
 
 @if $ribbons--enabled {
+  $ribbon--selector: selector(new 'ribbon' with $ribbons--syntax);
+
   @include statement($ribbon--selector, (
-    ('@include ribbons--mixin-example', null),
     ('font-size', $ribbons--font-size),
     ('font-family', $ribbons--font-family),
     ('font-weight', $ribbons--font-weight),
     ('text-transform', $ribbons--text-transform),
     ('letter-spacing', $ribbons--letter-spacing),
     ('line-height', $ribbons--line-height),
-    ('text-align', $ribbons--text-align),
     ('text-decoration', $ribbons--text-decoration),
     ('margin', $ribbons--margin),
-    ('border-width', $ribbons--border-width),
-    ('border-style', $ribbons--border-style),
-    ('border-color', $ribbons--border-color),
-    ('border-radius', $ribbons--border-radius),
     ('color', $ribbons--color),
     ('box-shadow', $ribbons--box-shadow),
     ('background', $ribbons--background),
-    ('background-color', $ribbons--background-color),
+    ('position', relative),
+    ('width', $ribbons--size),
+    ('height', $ribbons--size),
+    ('overflow', hidden),
+    ('pointer-events', none),
+    ('display', block),
   ));
+
+
+  $ribbon-band--selector: selector(set $ribbon--selector element 'band');
+
+  @include statement($ribbon-band--selector, (
+    ('@include ribbons--position', $ribbons--position),
+    ('@include ribbons-band--width', $ribbons--gutter),
+    ('background-color', $ribbons--background-color),
+    ('position', absolute),
+    ('top', 0),
+    ('height', $ribbons--height),
+    ('text-align', center),
+    ('user-select', none),
+    ('display', block),
+  ));
+
+
+  $ribbon-band-before--selector: selector(set $ribbon-band--selector pseudo-element 'before');
+
+  @include statement($ribbon-band-before--selector, (
+    ('@include ribbons-band-pseudos--commons', ''),
+    ('background-color', $ribbons--background-color),
+    ('left', 100%),
+  ));
+
+
+  $ribbon-band-after--selector: selector(set $ribbon-band--selector pseudo-element 'after');
+
+  @include statement($ribbon-band-after--selector, (
+    ('@include ribbons-band-pseudos--commons', ''),
+    ('background-color', $ribbons--background-color),
+    ('right', 100%),
+  ));
+
+
+  $ribbon-content--selector: selector(set $ribbon--selector element 'content');
+
+  @include statement($ribbon-content--selector, (
+    ('position', absolute),
+    ('top', 50%),
+    ('left', 50%),
+    ('transform', translate(-50%, -50%)),
+    ('z-index', 1),
+    ('white-space', nowrap),
+    ('overflow', hidden),
+    ('display', block),
+  ));
+
+
+  $ribbon-content-before--selector: selector(set $ribbon-content--selector pseudo-element 'before');
+
+  @include statement($ribbon-content-before--selector, (
+    ('content', ''),
+    ('background-color', $ribbons--background-color),
+    ('position', absolute),
+    ('top', -1px),
+    ('bottom', -1px),
+    ('left', -1px),
+    ('right', -1px),
+    ('z-index', -1),
+    ('overflow', hidden),
+  ))
 }

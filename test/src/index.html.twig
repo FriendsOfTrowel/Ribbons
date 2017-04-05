@@ -16,9 +16,17 @@
     </h1>
 
     {% embed '../../src/twig/ribbon.html.twig' %}
-        {% block body %}hello world !{% endblock %}
+        {% block content %}default{% endblock %}
     {% endembed %}
 
-    
+    {% embed '../../src/twig/ribbon.html.twig' with { modifiers: ['right'] } %}
+        {% block content %}on right{% endblock %}
+    {% endembed %}
+
+    {% for theme in ['primary', 'success', 'warning', 'danger'] %}
+        {% embed '../../src/twig/ribbon.html.twig' with { modifiers: [theme] } %}
+            {% block content %}{{ theme }}{% endblock %}
+        {% endembed %}
+    {% endfor %}
   </body>
 </html>

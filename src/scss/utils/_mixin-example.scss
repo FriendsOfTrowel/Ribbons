@@ -1,5 +1,0 @@
-@function ribbons--mixin-example($value, $flags) {
-  @return (
-    ('content', $value, $flags),
-  );
-}

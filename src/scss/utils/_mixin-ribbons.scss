@@ -1,0 +1,19 @@
+@function ribbons--position($orientation, $flags) {
+  $property-affected: if($orientation == 'right', 'left', 'right');
+
+  @if $orientation == 'right' or $orientation == 'left' {
+    $rotate-direction: if($orientation == 'left', -1, 1);
+
+    @return (
+      ($property-affected, 100%, $flags),
+      ($orientation, auto, $flags),
+      ('margin-#{$property-affected}', value($ribbons--gutter, $flags) * -1, $flags),
+      ('margin-#{$orientation}', 0, $flags),
+      ('transform-origin', top #{$property-affected}, $flags),
+      ('transform', rotate(45deg * $rotate-direction), $flags),
+    );
+  } @else {
+    @error "The parameter `$orientation` must be a string value that can only be 'right' or 'left'";
+  }
+
+}

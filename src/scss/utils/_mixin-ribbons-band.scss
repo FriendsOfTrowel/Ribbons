@@ -1,0 +1,26 @@
+@import './get-hypotenuse';
+
+@function ribbons-band--width($gutter, $flags) {
+  @return (
+    ('width', get-hypotenuse($gutter, $gutter), $flags),
+  );
+}
+
+
+// (1) Big static value in order to make sure that for any gutter value the
+//     before and after goes off the thumbnail element
+// (2) We set a negative margin on x axis in order to avoid a very thin band
+//     where the `::after` and `::before` pseudo elements are not perfectly
+//     sticked to the `.thumbnail__ribbon`.
+
+@function ribbons-band-pseudos--commons($nothing, $flags) {
+  @return (
+    ('content', ''),
+    ('display', block),
+    ('position', absolute),
+    ('top', 0),
+    ('height', 100%),
+    ('width', 10000px), // (1)
+    ('margin', 0 -1px), // (2)
+  );
+}

@@ -1,0 +1,28 @@
+@function square-root($r) {
+  $x0: 1;
+  $x1: $x0;
+
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+
+  @return $x1;
+}
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function square($number) {
+  $unitless: strip-units($number);
+  @return ($unitless * $unitless);
+}
+
+@function get-hypotenuse($ab, $ac) {
+  @if unit($ab) == unit($ac) {
+    @return square-root(square($ab) + square($ac)) + unquote(unit($ab));
+  } @else {
+    @error 'The two value into the get-hypotenuse() function must share the same unit type';
+  }
+}

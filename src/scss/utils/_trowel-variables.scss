@@ -1,17 +1,25 @@
-$ribbons--font-size: 1rem !default;
+$ribbons--font-size: trwl-theme-size('md') !default;
 $ribbons--font-family: null !default;
 $ribbons--font-weight: null !default;
 $ribbons--text-transform: null !default;
 $ribbons--letter-spacing: null !default;
 $ribbons--line-height: null !default;
-$ribbons--text-align: null !default;
 $ribbons--text-decoration: null !default;
 $ribbons--margin: null !default;
-$ribbons--border-width: null !default;
-$ribbons--border-style: null !default;
-$ribbons--border-color: null !default;
-$ribbons--border-radius: null !default;
-$ribbons--color: null !default;
+$ribbons--color: rgb(255, 255, 255) !default;
 $ribbons--box-shadow: null !default;
 $ribbons--background: null !default;
-$ribbons--background-color: null !default;
+$ribbons--background-color: (
+  'default': trwl-theme-color('gray-darker'),
+  '-primary': trwl-theme-color('primary'),
+  '-success': trwl-theme-color('success'),
+  '-warning': trwl-theme-color('warning'),
+  '-danger': trwl-theme-color('danger'),
+) !default;
+$ribbons--size: 7.5em !default;
+$ribbons--position: (
+  'default': 'left',
+  '-right': 'right',
+) !default; // 'left' or 'right'
+$ribbons--gutter: 3.75em !default;
+$ribbons--height: 1.875em !default;
